@@ -1,0 +1,120 @@
+<header style="margin-top:-78px"  class="masthead1">
+        <div class="header-content">
+          <div class="header-content-inner">
+            <br>
+            <h1 id="homeHeading" style="font-size:100px;" ><i style="margin-right:-38px;" class="glyphicon glyphicon-italic" ></i><i class="glyphicon glyphicon-ruble" ></i><i style="color:greenyellow" class="glyphicon glyphicon-grain" ></i></h1> 
+          </div>
+        </div>
+      </header>
+
+<div *ngIf="(AuthService.user | async)"  style="font-family:oblique;font-size:20px;margin-left:20px;">
+    <div style="margin-left:35px;">
+        <div >
+            <div class="col-sm-3 sidenav">
+                <h3>Add To Shoplist </h3>
+                <div>
+                    <div>
+                        <form>
+                            <div class="form-line">
+                                <div class="form-group">
+                                    <div *ngIf="selectedVeg!=null"><img style="border-radius:50%; height:200px;width:200;" [src]="'/assets/'+selectedVeg.ImageUrl">                                        <br>
+                                    </div>
+                                    <div *ngIf="selectedVeg==null"><img style="border-radius:50%; height:200px;width:200;" [src]="'/assets/AllVeg.jpg'">                                        <br>
+                                    </div>
+                                    <label style="color:black; " for="veg">Select A Vegetable:</label>
+                                    
+                                    <span class="input-group-addon"><i class="fa fa-leaf fa" aria-hidden="true"></i></span>
+                                    <select class="form-control" id="veg" name="selectedVeg" [(ngModel)]="selectedVeg">
+                                            <ng-container *ngIf="(AuthService.user | async)&&!(AuthService.Role)">
+                                                    <option *ngFor="let veg of Filterd" [ngValue]="veg">{{veg.ProductName}}</option>                                                
+                                            </ng-container>
+                                            <ng-container *ngIf="(AuthService.user | async)&&(AuthService.Role)">
+                                                    <option *ngFor="let veg of Storage" [ngValue]="veg">{{veg.ProductName}}</option>                                                
+                                            </ng-container>                                                                         
+                                </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="color:black" for="amount">Amount:</label>
+                                    <span class="input-group-addon"><i class="fa fa-university fa-lg" aria-hidden="true"></i></span>
+                                    <input type="number" step="1" *ngIf="(AuthService.user | async)&&(AuthService.Role)" class="form-control" id="amount"  min="0" name="Amount" [(ngModel)]="Amount">
+                                    <input type="number" *ngIf="(AuthService.user | async)&&!(AuthService.Role)" class="form-control" id="amount" min="0" [attr.max]="selectedVeg.Amount" name="Amount" [(ngModel)]="Amount">
+                                </div>
+                                <a (click)="AddToShopList()" class="btn btn-info mr5">
+                                    Add To Shop Cart 
+                                    <i class="fa fa-chevron-right ml5"></i>
+                                </a>
+                                <b [style.color]="'red'"> {{Emsg}} </b>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="row">
+                    <div style="margin-left:75px">
+                        <div *ngIf="ShopList != null">
+                            <div class="panel">
+                                <div class="panel-panel panel-success">
+                                    <h3 class="panel-heading">Your Shop List : </h3>
+                                    <div class="pull-right">
+
+                                    </div>
+                                </div>
+                                <table class="table table-hover" id="dev-table">
+                                    <thead>
+                                        <tr>
+                                            <th> Product Name </th>
+                                            <th>Price </th>
+                                            <th>Amount </th>
+                                            
+                                            <th> Total</th>
+                                            <th> Delete </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tr *ngFor="let Product of ShopList;let i =index">
+                                        <td>{{Product.Name }}</td>
+                                        <td>{{Product.Price + '₪'}} </td>
+                                        <td>{{Product.Amount}} </td>
+                                        <td> {{Product.Total}} </td>
+                                        <td><i (click)="DeleteOrderItem(Product)" style="color:red" class="glyphicon glyphicon-remove"></i></td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-md-2" *ngIf="ShopList != null">
+                <div class="panel-panel panel-info">
+                    <h3 class="panel-heading">Total</h3>
+                    <div class="pull-right">
+                    </div>
+                </div>
+                <div class="panel well alert alert-success">
+                    <p>Products Cost : <b> {{TotalForPurche  + ' ₪'}} </b></p>
+                    <p>Vat (0.17%) : <b> {{TotalForPurche*0.17  +  ' ₪'}} </b></p>
+                    <p>Total : <b>  {{TotalForPurche*1.17  + ' ₪'}}  </b></p>
+                </div>
+                <div>
+                        <button class="btn btn-primary btn-m js-scroll-trigger" (click)="Purche()">Order !!</button>
+                    </div>               
+                    
+                    <div *ngIf="AuthService.Role">
+                            <button class="btn btn-danger btn-m js-scroll-trigger" [style.background-color]="'red'"> {{Budjet + ' ₪'}}</button>
+                            
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>

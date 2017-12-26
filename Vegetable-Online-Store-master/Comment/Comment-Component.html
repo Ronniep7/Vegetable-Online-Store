@@ -1,0 +1,20 @@
+<div class="table-users">
+    <div [style.background-color]="'seagreen'" class="header">Comments</div>
+    
+    <table cellspacing="0">
+       <tr style="font-size:22px;color:seagreen;font-family:David;" [style.background-color]="'aliceblue'" >
+          <th>Picture</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th width="230">Comments</th>
+       </tr>
+ 
+       <tr *ngFor="let comment of Comments;let i = index" [style.background-color]="i%2!=0?'aliceblue':''" >
+          <td><img src="http://lorempixel.com/100/100/people/{{i+7}}" alt="" /></td>
+          <td>{{comment.From}}</td>
+          <td>{{comment.Phone}}</td>
+          <td>"{{comment.Content}}"</td>
+       </tr>
+ 
+    </table>
+ </div>

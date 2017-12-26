@@ -1,0 +1,209 @@
+<header style="margin-top:-78px"  class="masthead1">
+    <div class="header-content">
+      <div class="header-content-inner">
+        <br>
+        <h1 id="homeHeading" style="font-size:100px;" ><i style="margin-right:-38px;" class="glyphicon glyphicon-italic" ></i><i class="glyphicon glyphicon-ruble" ></i><i style="color:greenyellow" class="glyphicon glyphicon-grain" ></i></h1> 
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row main">
+      <div class="main-login main-center"  >
+      <h2>Register</h2>
+      <h5>Come And Enjoy Our Cheap Prices</h5>
+        <form #trvRegister="ngForm">
+
+          <div class="form-group">
+            <label for="name" class="cols-sm-2 control-label">Your Name</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                <input #trvName="ngModel" type="text" class="form-control" id="name" placeholder="Enter Your Name"  required [(ngModel)]="Customer.Name" name="Customer.Name"/>
+              <div  *ngIf="trvName.errors && (trvName.dirty || trvName.touched)"
+              class="alert alert-danger">
+             <div [hidden]="!trvName.errors.required">
+              Name is required
+            </div>
+            </div>
+             </div>
+              </div>
+                </div>
+
+          <div class="form-group">
+            <label for="last" class="cols-sm-2 control-label">Last Name</label>
+            <div class="cols-sm-10">
+              <div  class="input-group">
+                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                <input #trvLastName="ngModel"  type="text" class="form-control" id="last" placeholder="Enter Your Last Name"  required [(ngModel)]="Customer.LastName" name="Customer.LastName"/>
+                            <div  *ngIf="trvLastName.errors && (trvLastName.dirty || trvLastName.touched)"
+ class="alert alert-danger">
+ <div [hidden]="!trvLastName.errors.required">
+ Last Name is required
+ </div>
+ </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="bsname" class="cols-sm-2 control-label">Business Name</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                <input #trvBusinessName="ngModel" type="text" class="form-control" id="bsname" placeholder="Enter Your Business Name" required [(ngModel)]="Customer.Business" name="Customer.Business"/>
+                <div  *ngIf="trvBusinessName.errors && (trvBusinessName.dirty || trvBusinessName.touched)" class="alert alert-danger">
+                <div [hidden]="!trvBusinessName.errors.required">
+                 Business Name is required
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ema" class="cols-sm-2 control-label">Your Email</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                <input #trvEmail="ngModel" type="email" class="form-control" id="ema" placeholder="Enter Email" required [(ngModel)]="Customer.Email" name="Customer.Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+                                         <div  *ngIf="trvEmail.errors && (trvEmail.dirty || trvEmail.touched)"
+ class="alert alert-danger">
+ <div [hidden]="!trvEmail.errors.required">
+ Email is required
+ </div>
+ <div [hidden]="!trvEmail.errors.pattern">
+  Email Badly Formated ( Example For Correct : "Israel@isara.com" )
+  </div>
+ </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="cols-sm-2 control-label">Password</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                <input #trvPassword="ngModel" type="password" class="form-control" id="pwd" placeholder="Enter password" required [(ngModel)]="Customer.Password" name="Customer.Password"/>
+                                         <div  *ngIf="trvPassword.errors && (trvPassword.dirty || trvPassword.touched)"
+ class="alert alert-danger">
+ <div [hidden]="!trvPassword.errors.required">
+ Password is required
+ </div>
+ </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span> 
+                <input #trvCPassword="ngModel" type="password" class="form-control" id="cpwd" placeholder="Confirm password" required [(ngModel)]="Customer.CPassword" name="Customer.CPassword"/>
+                                         <div  *ngIf="trvCPassword.errors && (trvCPassword.dirty || trvCPassword.touched)"
+ class="alert alert-danger">
+ <div [hidden]="!trvCPassword.errors.required">
+ Confirm Your Password
+ </div>
+ </div>
+              </div>
+            </div>
+          </div>
+
+<h3>Address :</h3>
+          <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">City :</label>
+          <div class="cols-sm-10">
+            <div class="input-group" >
+        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+        <input #trvAddress="ngModel" type="text" class="form-control" id="add" placeholder="Enter Your City" required [(ngModel)]="City" name="City"/>
+                                 <div  *ngIf="trvAddress.errors && (trvAddress.dirty || trvAddress.touched)"
+class="alert alert-danger">
+<div [hidden]="!trvAddress.errors.required">
+City Name is required
+</div>
+</div>
+</div>
+      </div>
+
+  <!-- Street -->
+    <label for="username" class="control-label">Street : </label>
+    <div class="cols-sm-10">
+        <div class="input-group" >
+        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+        <input #trvAddress="ngModel" type="text" class="form-control" id="add" placeholder="Enter Your Street" required [(ngModel)]="Street" name="Street"/>
+                                 <div  *ngIf="trvAddress.errors && (trvAddress.dirty || trvAddress.touched)"
+class="alert alert-danger">
+<div [hidden]="!trvAddress.errors.required">
+Street Name is required
+</div>
+</div>
+</div>
+
+      </div>
+
+      
+  <!-- Street Number -->
+          <label for="username" class="control-label">Street Number :</label>
+          <div class="cols-sm-10">
+              <div class="input-group" >
+        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+        <input #trvAddress="ngModel" type="number" class="form-control"  id="add" placeholder="Enter Your Street Number" required [(ngModel)]="StreetNumber" name="StreetNumber"/>
+                                 <div  *ngIf="trvAddress.errors && (trvAddress.dirty || trvAddress.touched)"
+class="alert alert-danger">
+<div [hidden]="!trvAddress.errors.required">
+    Street Number is required
+</div>
+</div>
+</div>
+
+    </div>
+</div>
+
+          
+
+          <div class="form-group">
+            <label for="phn" class="cols-sm-2 control-label">Phone</label>
+            <div class="cols-sm-5">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                <input #trvPhone="ngModel" maxlength="10" type="phone" pattern="^[0-9][1-9]{9}$" class="form-control" id="phn" placeholder="Enter Your Phone Number" required [(ngModel)]="Customer.Phone" name="Customer.Phone"/>
+                                          <div  *ngIf="trvPhone.errors && (trvPhone.dirty || trvPhone.touched)"
+ class="alert alert-danger">
+ <div [hidden]="!trvPhone.errors.required">
+  Phone is required
+  </div> <div [hidden]="!trvPhone.errors.pattern">
+    Pattern is required
+    </div>
+ </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group ">
+            <button  type="submit" (click)="AddCustomer()" [disabled]="!trvRegister.valid"  type="button"  id="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+          </div>
+          <div style="background-color:lightcoral;text-align:center;"><b [style.color]="'red'">{{ErrMsg}}</b></div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  
+  
+          <!-- Javascript -->
+          <script src="assets/js/jquery-1.11.1.min.js"></script>
+          <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+          <script src="assets/js/jquery.backstretch.min.js"></script>
+          <script src="assets/js/retina-1.1.0.min.js"></script>
+          <script src="assets/js/scripts.js"></script>
+          
+          <!--[if lt IE 10]>
+              <script src="assets/js/placeholder.js"></script>
+          <![endif]-->
+
+

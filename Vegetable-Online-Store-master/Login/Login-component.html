@@ -1,0 +1,41 @@
+<header style="margin-top:-78px"  class="masthead1">
+    <div class="header-content">
+      <div class="header-content-inner">
+        <br>
+        <h1 id="homeHeading" style="font-size:100px;" ><i style="margin-right:-38px;" class="glyphicon glyphicon-italic" ></i><i class="glyphicon glyphicon-ruble" ></i><i style="color:greenyellow" class="glyphicon glyphicon-grain" ></i></h1> 
+      </div>
+    </div>
+  </header>
+          <div class="section-content">
+        </div>
+        <div class="contact-section">
+        <div class="container">
+            <h1 class="section-header">Login</h1>
+            
+          <form>
+            <div class="col-md-6 form-line">
+                <div class="form-group">
+                  <label for="exampleInputUsername">Your Email</label>
+                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                  <input  type="email" class="form-control" id="ema" placeholder="Enter Email" name="User.Email" [(ngModel)]="User.Email" >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail">Password</label>
+                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                  <input type="password" class="form-control" id="pwd" placeholder="Enter password" [(ngModel)]="User.Password" name="User.Password">
+                </div>	
+                  <button  type="submit" (click)="LoginCustomer()"  type="button" class="btn btn-success submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>   Login</button>
+                  <div style="background-color:lightgreen;text-align:center" [style.color]="'green'">{{ErrMsg}}</div>
+                  
+            </div>
+            
+          </form>
+          
+        </div>
+      
+
+  
+        <br><br><br><br><br><br>
+        
+     
+            

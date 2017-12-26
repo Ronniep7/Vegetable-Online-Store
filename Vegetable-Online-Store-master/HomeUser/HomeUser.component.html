@@ -1,0 +1,45 @@
+<header style="margin-top:-78px"  class="masthead1">
+    <div class="header-content">
+      <div class="header-content-inner">
+        <br>
+        <h1 id="homeHeading" style="font-size:100px;" ><i style="margin-right:-38px;" class="glyphicon glyphicon-italic" ></i><i class="glyphicon glyphicon-ruble" ></i><i style="color:greenyellow" class="glyphicon glyphicon-grain" ></i></h1> 
+      </div>
+    </div>
+  </header>
+
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Your Details : </div>
+        <div class="panel-body col-sm-6">
+            
+                        <p> First Name : <b> {{CustomerDetailes.Name }} </b></p> 
+                        <p> Last Name : <b> {{CustomerDetailes.LastName}} </b></p> 
+                        <p> Address : <b> {{CustomerDetailes.Address}} </b></p> 
+                    </div>      
+                      <div class="panel-body col-sm-6">
+                        
+                                    <p>Phone : <b> {{CustomerDetailes.Phone}} </b></p> 
+                                    <p> Business : <b> {{CustomerDetailes.Business}} </b></p> 
+                                    <p>E-Mail : <b> {{CustomerDetailes.Email }} </b></p> 
+                                </div>
+        <div class="panel-footer"> <button (click)="Appear=!Appear"  class="btn btn-success">{{CustomerDetailes.Name}} Click Here To See Our Product List <i class="fa fa-chevron-right ml5"></i></button>   </div>
+      </div>
+
+      <div class="col-sm-2">  <br></div>
+      
+    </div>
+
+    <div  class="container" *ngIf="Appear">    
+        <div class="row">
+          <div *ngFor="let item of Products" class="col-sm-2">
+            <div class="panel panel-success">
+              <div class="panel-heading"><a (click)="PassToOrder(item.Id)" >{{item.ProductName}}</a></div>
+              <div class="panel-body"><img [src]="'/assets/'+item.ImageUrl" class="img-responsive" style="width:120px ; height : 120px"  alt="Image"></div>
+              <div class="panel-footer">Price : {{item.CustomerPrice}}₪</div>
+            </div>
+          </div>
+ 
+        </div>
+      </div><br>
+      
